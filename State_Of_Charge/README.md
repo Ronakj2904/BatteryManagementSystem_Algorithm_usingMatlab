@@ -51,3 +51,4 @@ This method estimates the bias and uses this as the input signal to the Kalman F
  6) Code name : **bardeltadata.m**
     - **Explanation** This provides  with the data for the Bar delta filtering method.
    
+# ElectroChemical Cell Model
