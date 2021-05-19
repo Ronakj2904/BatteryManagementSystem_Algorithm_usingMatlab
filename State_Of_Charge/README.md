@@ -53,3 +53,10 @@ This method estimates the bias and uses this as the input signal to the Kalman F
     - **Explanation** This provides  with the data for the Bar delta filtering method.
    
 # ElectroChemical Cell Model
+
+This branch of algorithm aims to exexute the following things.
+- Interpret the data obtained from the laboratory tests on a lithium-ion cell, and use this data to obtain the cell parameters,for example: State of Charge, Terminal voltage, Open Circuit Voltage for a cell.
+- The cell is modelled as a Randless circuit with Warburg impedance.
+- ![alt text](https://github.com/[Ronakj2904]/[BatteryManagementSystem_Algorithm_usingMatlab]/blob/[State_Of_Charge]/randlesscircuit.jpg?raw=true)
+
+
