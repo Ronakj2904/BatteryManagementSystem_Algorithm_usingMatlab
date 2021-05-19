@@ -56,7 +56,28 @@ This method estimates the bias and uses this as the input signal to the Kalman F
 
 This branch of algorithm aims to exexute the following things.
 - Interpret the data obtained from the laboratory tests on a lithium-ion cell, and use this data to obtain the cell parameters,for example: State of Charge, Terminal voltage, Open Circuit Voltage for a cell.
-- The cell is modelled as a Randless circuit with Warburg impedance.
-- ![alt text](https://github.com/[Ronakj2904]/[BatteryManagementSystem_Algorithm_usingMatlab]/blob/[State_Of_Charge]/randlesscircuit.jpg?raw=true)
+The cell is modelled as a Randless circuit with Warburg impedance.
+![Image of Randless circuit ](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/randlesscircuit.JPG)
+The equations for this model are formulated, first in continuous time model and then converted to discrete time model.
+The currents from the resistor current pairs are 
+![Image of RC current ](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/resistor_current.JPG)
+**Hysteresis** is an important parameter that needs to be taken into account while modelling a lithium-ion cell. In an normal cell, if it is allowed to rest long enough, diffusion voltagesdecay to zero, so model voltage decays to OCV, but due to hysteresis, the behaviour of lithium-ion cell is different.
+The hysteresis is differentiated as two forms and consequently, the equations are formulated
+- a) Dynamic hysteresis 
+- ![Image of dynamic hysteresis](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/hysteresis.JPG)
+- b) Instantaneous hysteresis 
+     - ![Image of instantaneous hysteresis](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/instantaneoushysteresis.JPG)
+       The **instantenous hysteresis** only changes when there is a change in the direction of the current.
+        The overall hysteresis is the sum of the two hysteresis effects.
+ 
+ If all the effects are cumulated, the cell model is said to be an **Enhanced Self Correcting Model**.
+ The state equation of an ESC is 
+ ![Image of an ESC state equation](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/modelequation.JPG)
+ 
+ The ESC output equation is 
+ ![Image of ESC output equation](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/opequation.JPG)
+ 
+ Finally, the state space form of an ESC model is 
+ ![Image of State space form](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/statespaceformofcell.JPG).
 
 
