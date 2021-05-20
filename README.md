@@ -1,6 +1,7 @@
+# BatteryManagementSystem_Algorithm_usingMatlab
 **Overview of the code**
  The codes are used in supplement with the books **Battery Management Systems I and II, by Gregory Plett** and the course **Algorithms for Battery Management System, by Coursera**
-# State_Of_Charge
+## State_Of_Charge
  
   **Abbreviations\Symbols used in the code and their physical\actual meaning and units**
   - z    :  State of Charge
@@ -52,7 +53,7 @@ This method estimates the bias and uses this as the input signal to the Kalman F
  6) Code name : **bardeltadata.m**
     - **Explanation** This provides  with the data for the Bar delta filtering method.
    
-# ElectroChemical Cell Model
+## ElectroChemical Cell Model
 
 This branch of algorithm aims to exexute the following things.
 - Interpret the data obtained from the laboratory tests on a lithium-ion cell, and use this data to obtain the cell parameters,for example: State of Charge, Terminal voltage, Open Circuit Voltage for a cell.
@@ -79,5 +80,41 @@ The hysteresis is differentiated as two forms and consequently, the equations ar
  
  Finally, the state space form of an ESC model is 
  ![Image of State space form](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/statespaceformofcell.JPG).
+ 
+ Code **runProcessOCV.m** runs the processOCV for a cell against the recorded laboratory data.
+ 
+ While **processOCV** simulates the cell for static data/cell without a load, the **processDynamicOCV** simulates the cell for dynamic data/cell under load.
+ 
+ The overall procedure to deteremine parameter values for a cell under load is as follows:
+ 1. First, ***Coulombic Efficiency*** and ***Total Cell Capacity*** are calculated from data, directly, as we did for the OCV test results
+ 2. Compute ***state of charge*** and ***open circuit voltage*** for every data sample; subtract OCV from terminal voltage.
+ 3. Use ***subspace system identiﬁcation*** technique to ﬁnd R–C time constants.
+ 4. Compute ***instantaneous hysteresis*** and ***R-C currents*** for every data sample
+ 5. A ***hystereis rate constant*** is calculated that determines the amount of hysteresis present in a cell.
+ 6. "Unexplained” part of voltage is now linear in parameters—solve for these parameter values using least squares.
+    - The unexplained part is
+    - ![Image of unexplained part](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/unexplainedpart.JPG)
+    - ![Image of lsq method matlab](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/unexplainedpart2.JPG)
+    - The X matrix is calculated in least square method.
+ 7. Compute rms voltage-prediction error of present model
+ 8. Adapt ***hysteresis rate constant*** to minimize this error, iterating steps 5–8 until convergence is reached
 
-
+ Code **getParamESC.m** retrieves a parameter for a given cell at a given temperature.
+ 
+ Code **OCVfromSOCtemp.m** interpolates and returns the open circuit voltage for a given state of charge and temperature.
+ 
+ Simulation of a Constant current/Constant Voltage charging cycle can be performed with **ChargingCycleSimulation.m**
+ 
+ Simulation of a Constant power/Constant Voltage charging cycle can be performed with **ChargingCycleSimulation(CP_CV).m**
+ 
+ Simulation of a Parallel Cell module can be performed with **PCMsim.m**
+ 
+ Simulation of a Series Cell module can be performed with **SCMsim.m**
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
