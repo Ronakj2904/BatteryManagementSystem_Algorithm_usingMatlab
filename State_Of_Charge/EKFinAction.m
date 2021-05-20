@@ -9,10 +9,7 @@ maxIter = 40;
 % with a deterministic value. This allows us to get reproducible results that 
 % still contain apparent randomness.
 %
-% YOU MUST NOT CHANGE THE FOLLOWING LINE IN ORDER TO ARRIVE AT "CORRECT" ANSWERS 
-% FOR THE QUIZ. IF YOU CHANGE IT TO EXPLORE THE BEHAVIOR OF THE FILTER FOR 
-% DIFFERENT PSEUDO-RANDOM SEQUENCES, CHANGE IT BACK TO randn("seed",-1) BEFORE 
-% COMPUTING RESULTS TO ENTER AS QUIZ RESPONSES.
+
 randn("seed",-1);
 
 % Initialize true state, state estimate, error covariance, initial input
