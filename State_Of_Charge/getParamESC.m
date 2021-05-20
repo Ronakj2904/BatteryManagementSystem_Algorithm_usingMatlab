@@ -9,12 +9,7 @@
 %    'etaParam', or 'GParam' 
 % (not case sensitive).
 
-% Copyright (c) 2015 by Gregory L. Plett of the University of Colorado 
-% Colorado Springs (UCCS). This work is licensed under a Creative Commons 
-% Attribution-NonCommercial-ShareAlike 4.0 Intl. License, v. 1.0.
-% It is provided "as is", without express or implied warranty, for 
-% educational and informational purposes only.
-%
+
 % This file is provided as a supplement to: Plett, Gregory L., "Battery
 % Management Systems, Volume I, Battery Modeling," Artech House, 2015.
 
