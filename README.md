@@ -111,10 +111,65 @@ The hysteresis is differentiated as two forms and consequently, the equations ar
  
  Simulation of a Series Cell module can be performed with **SCMsim.m**
  
+ To take the algorithms a step further, the battery is simulated for an electric vehicle under various drive cycles and taking under consideration the characteristics of motor,inverter,drivetrain,etc.
+The drive cycles used are **Urban Dynamometer Driving Schedule**, **Highway Fuel Efficiency Test**, **New York City Cycle**.
+
+The approach to simulating an electric vehicle behaviour is as follows:
+
+![Image of EVsimulation](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/blockdiagram.JPG)
+
+  - The desired accelerations and desired speed are limited by the actual achievable accelerations and speed of the vehicle and powertrain module.
+  - The desired road forces are limited by the forces that the tire-road dynamic can actually achieve.
+  - Desired torque and power values restricted by speciﬁcations of motor chosen for vehicle, and thus achievable torques and power values may be lower. The desired  torque must be compatible with the speed-torque for the particular motor chosen.
+  - Consequently the the battery power is computed based on these limitations and the limitation of the motor power.
+  - The Battery SOC is then updated.
+  - Finally the Battery range is extrapolated from the rate of depletion of the availabe battery energy.
  
+ **EQUATIONS USED**:
  
+   - The vehicle desired acceleration is
+     ![Image of desired acceleration](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/desireedacc.JPG)
+     
+   - The desired acceleration force is
+     ![Image of desired acceleration force](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/desaccforce.JPG)
+       - The equivalent mass required is 
+         ![Image of equivalent mass](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/eqmass.JPG)
+         
+   - The drag forces acting on the vehicle are classified as aerodynamic force and rolling force 
+     ![Image of drag forces](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/dragforces.JPG)
+     
+   - The brake drag and grade forces acting on the vehicle are
+     ![Image of brake drag and rolling force](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/dragf2.JPG)
+     
+   - The demanded motor torque can be derived as 
+     ![Image of demanded motor torque](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/desireedacc.JPG)
+     
+   - The actual acceleration force and consequently the actual acceleration is as follows
+     ![Image of actual acceleration and force](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/accforce.JPG)
+     
+   - The limit motor speed is 
+     ![Image of limit motor speed](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/motorspeed.JPG)
  
+   - The actual vehicle vehicle speed is then computed from this limit speed
+     ![Image of vehicle speed](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/actualspeed.JPG)
+     
+   - The battery power demand is then computed
+     ![Image of motor power](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/mototrpower.JPG)
+     ![Image of battery power](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/battpower.JPG)
+     
+   - The current drawn out of the battery is 
+     ![Image of battery current](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/battcurrent.JPG)
+     
+   - The State of Charge of the battery for the drive cycle is 
+     ![Image of battery SOC](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/battSOC.JPG)
+     
+   - Finally the driving range of the battery according to the different drive cycles is calculated
+     ![Image of battery range](https://github.com/Ronakj2904/BatteryManagementSystem_Algorithm_usingMatlab/blob/master/images/range.JPG)
+     
+ Code **setupSimVehicle.m** sets up the different blocks for the simulation of the electric vehicle behaviour. A different block is used each for setting up a single cell,PCM/SCM module, Battery pack, Motor, Wheel, Drivetrain and Vehicle.
  
+ Code **simVehicle.m** simulates the Vehicle for the given data and stores the result.
  
+ Code **setupSimVehicleplots.m** plots the obtained results.
  
  
