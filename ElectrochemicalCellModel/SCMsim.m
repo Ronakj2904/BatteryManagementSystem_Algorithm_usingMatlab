@@ -28,15 +28,14 @@ rc = exp(-1./abs(getParamESC('RCParam',T,model)))'*ones(Ns,Np);
 r  = (getParamESC('RParam',T,model))';
 % In the following line, I set the hysteresis magnitudes to zero to make
 % it easier to understand results. I assume this value of zero for the
-% practice quiz questions. After completing the practice quiz, you can 
-% use the nonzero values and see how it changes simulation results!
+
 m  = 0*getParamESC('MParam',T,model)*ones(Ns,Np);
 g  = getParamESC('GParam',T,model)*ones(Ns,Np);
 r0 = getParamESC('R0Param',T,model)*ones(Ns,Np); 
 rt = 0.000125; % 125 microOhm resistance for each tab
 
 % =====================================================================
-% MODIFY THIS SECTION WHEN ANSWERING THE PRACTICE QUIZ
+
 
 % Modified initialization for cell variability
 if 0, % set to "if 1," to execute, or "if 0," to skip this code
