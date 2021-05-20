@@ -68,7 +68,7 @@ The approach to simulating an electric vehicle behaviour is as follows:
   - Desired torque and power values restricted by speciﬁcations of motor chosen for vehicle, and thus achievable torques and power values may be lower. The desired  torque must be compatible with the speed-torque for the particular motor chosen.
   - Consequently the the battery power is computed based on these limitations and the limitation of the motor power.
   - The Battery SOC is then updated.
-  - Finally the Battery range is extrapolated from the rate of depletion of the availabe battery energy.
+  - Finally the Battery range is extrapolated from the rate of depletion of the available battery energy.
  
  **EQUATIONS USED**:
  
