@@ -8,11 +8,7 @@ maxIter = 40;
 % every time you run the code, you can "seed" the pseudo random number generator 
 % with a deterministic value. This allows us to get reproducible results that 
 % still contain apparent randomness.
-%
-% YOU MUST NOT CHANGE THE FOLLOWING LINE IN ORDER TO ARRIVE AT "CORRECT" ANSWERS 
-% FOR THE QUIZ. IF YOU CHANGE IT TO EXPLORE THE BEHAVIOR OF THE FILTER FOR 
-% DIFFERENT PSEUDO-RANDOM SEQUENCES, CHANGE IT BACK TO randn("seed",-1) BEFORE 
-% COMPUTING RESULTS TO ENTER AS QUIZ RESPONSES.
+%.
 randn("seed",-1);
 
 % Define size of variables in model
